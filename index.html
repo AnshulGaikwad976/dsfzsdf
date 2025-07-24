@@ -2,59 +2,38 @@
 <html>
 
 <head>
-    <title>Sum of Arguments</title>
+    <title>Object and Array Display</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             padding: 20px;
-        }
-
-        input,
-        button {
-            margin: 5px;
         }
     </style>
 </head>
 
 <body>
 
-    <h2>Sum of Arguments & Trigonometric Values</h2>
+    <h2>Display Object and Array Values</h2>
 
-    <p>Enter numbers to add:</p>
-    <input type="number" id="arg1" placeholder="Argument 1">
-    <input type="number" id="arg2" placeholder="Argument 2">
-    <input type="number" id="arg3" placeholder="Argument 3">
-    <button onclick="calculate()">Calculate</button>
-
-    <h3>Results:</h3>
-    <p id="sumResult"></p>
-    <p id="trigResults"></p>
+    <div id="output"></div>
 
     <script>
-        // Convert degrees to radians
-        function toRadians(deg) {
-            return deg * (Math.PI / 180);
-        }
+        // Variable with object containing array and values
+        let studentInfo = {
+            name: "Aryan",
+            age: 17,
+            hobbies: ["Reading", "Coding", "Football"],
+            grade: "12th"
+        };
 
-        // Calculate sum and trig values
-        function calculate() {
-            let a = parseFloat(document.getElementById("arg1").value) || 0;
-            let b = parseFloat(document.getElementById("arg2").value) || 0;
-            let c = parseFloat(document.getElementById("arg3").value) || 0;
-
-            let sum = a + b + c;
-            document.getElementById("sumResult").textContent = "Sum:"+sum; 
-
-            let rad = toRadians(sum);
-            let sinVal = Math.sin(rad).toFixed(4);
-            let cosVal = Math.cos(rad).toFixed(4);
-            let tanVal = Math.tan(rad).toFixed(4);
-
-            document.getElementById("trigResults").innerHTML =
-                `sin(${sum}°) = ${sinVal}<br>
-         cos(${sum}°) = ${cosVal}<br>
-         tan(${sum}°) = ${tanVal}`;
-        }
+        // Display using object keys
+        let outputDiv = document.getElementById("output");
+        outputDiv.innerHTML = `
+      <p><strong>Name:</strong> ${studentInfo["name"]}</p>
+      <p><strong>Age:</strong> ${studentInfo["age"]}</p>
+      <p><strong>Grade:</strong> ${studentInfo["grade"]}</p>
+      <p><strong>Hobbies:</strong> ${studentInfo["hobbies"].join(", ")}</p>
+    `;
     </script>
 
 </body>
